@@ -82,7 +82,9 @@ def custom_extend(input_list, second_list):
 
     """
 
-    pass
+    for item in second_list:
+        input_list[-1:] = [input_list[-1], item]
+
 
 
 def custom_insert(input_list, index, value):
@@ -100,7 +102,7 @@ def custom_insert(input_list, index, value):
 
     """
 
-    pass
+    input_list[index:index] = [value]
 
 
 def custom_remove(input_list, value):
@@ -118,8 +120,13 @@ def custom_remove(input_list, value):
         True
 
     """
+    count = 0
 
-    pass
+    for item in input_list:
+        if item == value:
+            del input_list[count]
+            break
+        count += 1
 
 
 def custom_pop(input_list):
@@ -138,7 +145,11 @@ def custom_pop(input_list):
 
     """
 
-    return None
+    popped_item = input_list[-1]
+    del input_list[-1]
+
+    return popped_item
+    
 
 
 def custom_index(input_list, value):
@@ -154,8 +165,14 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
+    count = 0
 
+    for item in input_list:
+        if item == value:
+            break
+        count += 1
+
+    return count
 
 def custom_count(input_list, value):
     """Return the number of times value appears in the list.
@@ -170,46 +187,55 @@ def custom_count(input_list, value):
 
     """
 
-    return 0
+    count = 0
+
+    for item in input_list:
+        if item == value:
+            count += 1
+
+    return count
 
 
 def custom_reverse(input_list):
-    """Reverse the elements of the input_list.
+    # """Reverse the elements of the input_list.
 
-    Like input_list.reverse(), custom_reverse(input_list) should reverse the
-    elements of the original list and return nothing (we call this reversing
-    "in place").
+    # Like input_list.reverse(), custom_reverse(input_list) should reverse the
+    # elements of the original list and return nothing (we call this reversing
+    # "in place").
 
-    For example:
+    # For example:
 
-        >>> multiples = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
-        >>> custom_reverse(multiples)
-        >>> multiples == [27, 24, 21, 18, 15, 12, 9, 6, 3, 0]
-        True
+    #     >>> multiples = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]
+    #     >>> custom_reverse(multiples)
+    #     >>> multiples == [27, 24, 21, 18, 15, 12, 9, 6, 3, 0]
+    #     True
 
-    """
+    # """
 
-    pass
+    input_list[-1::-1]
 
 
 def custom_contains(input_list, value):
-    """Return True or False if value is in the input_list.
+    # """Return True or False if value is in the input_list.
 
-    Like (value in input_list), should return True if the list contains the
-    specified value and False if it does not. Remember, do not use the `if X in Y`
-    statement -- find another way to solve it!
+    # Like (value in input_list), should return True if the list contains the
+    # specified value and False if it does not. Remember, do not use the `if X in Y`
+    # statement -- find another way to solve it!
 
-    For example:
+    # For example:
 
-        >>> custom_contains([0, 3, 6, 9, 12, 15, 18, 21, 24], 23)
-        False
+    #     >>> custom_contains([0, 3, 6, 9, 12, 15, 18, 21, 24], 23)
+    #     False
 
-        >>> custom_contains([0, 3, 6, 9, 12, 15, 18, 21, 24], 24)
-        True
+    #     >>> custom_contains([0, 3, 6, 9, 12, 15, 18, 21, 24], 24)
+    #     True
 
-    """
-
-    return None
+    # """
+    for item in input_list:
+        if item == value:
+            return True
+        else:
+            return False
 
 
 def custom_equality(some_list, another_list):
@@ -227,8 +253,14 @@ def custom_equality(some_list, another_list):
         False
 
     """
-
-    return None
+    count = 0
+    for item in some_list:
+        if item == another_list[count]:
+            count += 1
+        else:
+            return False
+            break
+    return True
 
 
 ##############################################################################
